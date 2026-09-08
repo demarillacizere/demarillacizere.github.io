@@ -1,7 +1,9 @@
 ---
 title: "Louise Demarillac Izere"
+about:
+  template: jolla
+  image: images/profile.jpg
 ---
 
-This is a Quarto website.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+My name is Louise Demarillac and I am from Rwanda. I have a bachelor's degree in Computer Science, and I have been working as a software developer for the past two and a half years. I was working on creating and maintaining automation scripts for a test and training data automation system, that is used to classify and analyse network traffic data. I joined the Master of Data Science at the University of british Columbia because I am interested in providing data-driven insights to solve challenges in my community and I look forward to learning all the tools and techniques involved with working with data to solve problems.
