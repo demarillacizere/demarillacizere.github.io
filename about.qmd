@@ -1,7 +1,6 @@
 ---
 title: "About"
 ---
-
 ## Background
 
 I grew up in Rwanda and studied Computer Science at the African Leadership University. Before starting the MDS, I worked as a Software Engineer, building and maintaining data-driven systems and automation tools. I’ve also been involved in the tech community through organizations like Google Developers Group Kigali, that organize events and mentor students and early-career developers.
