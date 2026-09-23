@@ -1,0 +1,40 @@
+---
+title: "Exploring Palmer Penguins"
+author: "Louise Izere"
+date: 2026-09-22
+format: html
+jupyter: python3
+---
+
+## Exploring Palmer Penguins
+
+The data comes from the [Palmer Penguins project](https://allisonhorst.github.io/palmerpenguins/).
+
+```{python}
+import pandas as pd
+import altair as alt
+from palmerpenguins import load_penguins
+
+penguins = load_penguins()
+penguins.head()
+```
+
+I first compared the average body mass of each species.
+
+```{python}
+penguins.groupby("species")["body_mass_g"].mean()
+```
+
+Gentoo penguins have the highest average body mass of the three species.
+
+Next, I looked at the relationship between flipper length and body mass.
+
+```{python}
+alt.Chart(penguins).mark_point().encode(
+    x="flipper_length_mm",
+    y="body_mass_g",
+    color="species"
+)
+```
+
+The plot shows that penguins with longer flippers tend to have greater body mass.
