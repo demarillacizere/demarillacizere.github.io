@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Exploring Global Development with Gapminder\n\n\n\n\n\n\n\n\nSep 22, 2026\n\n\nLouise Izere\n\n\n\n\n\n\n\n\n\n\n\n\nExploring Palmer Penguins\n\n\n\n\n\n\n\n\nSep 22, 2026\n\n\nLouise Izere\n\n\n\n\n\n\n\n\n\n\n\n\nMy first weeks in MDS\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\nLouise Izere\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Louise Demarillac Izere",
+    "section": "",
+    "text": "My name is Louise Demarillac and I am from Rwanda. I have a bachelor’s degree in Computer Science, and I have been working as a software developer for the past two and a half years. I was working on creating and maintaining automation scripts for a test and training data automation system, that is used to classify and analyse network traffic data. I joined the Master of Data Science at the University of british Columbia because I am interested in providing data-driven insights to solve challenges in my community and I look forward to learning all the tools and techniques involved with working with data to solve problems."
+  },
+  {
+    "objectID": "posts/r-posts/index.html",
+    "href": "posts/r-posts/index.html",
+    "title": "Exploring Global Development with Gapminder",
+    "section": "",
+    "text": "In this post, I explore how life expectancy and GDP per capita differ across continents using the Gapminder dataset.\nData source: Gapminder\n\nlibrary(tidyverse)\nlibrary(gapminder)\n\nFirst, I look at countries with the highest life expectancy in 2007.\n\nfiltered_gapminder &lt;- filter(gapminder, year == 2007)\nfiltered_gapminder |&gt;\n  arrange(desc(lifeExp)) |&gt;\n  select(country, continent, lifeExp, gdpPercap) |&gt;\n  head(10)\n\n# A tibble: 10 × 4\n   country          continent lifeExp gdpPercap\n   &lt;fct&gt;            &lt;fct&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n 1 Japan            Asia         82.6    31656.\n 2 Hong Kong, China Asia         82.2    39725.\n 3 Iceland          Europe       81.8    36181.\n 4 Switzerland      Europe       81.7    37506.\n 5 Australia        Oceania      81.2    34435.\n 6 Spain            Europe       80.9    28821.\n 7 Sweden           Europe       80.9    33860.\n 8 Israel           Asia         80.7    25523.\n 9 France           Europe       80.7    30470.\n10 Canada           Americas     80.7    36319.\n\n\nThe countries with the highest life expectancy in 2007 were mostly in Asia and Europe.\nNext, I calculate the average life expectancy and GDP per capita for each continent.\n\nfiltered_gapminder |&gt;\n  group_by(continent) |&gt;\n  summarise(\n    life_exp = mean(lifeExp),\n    gdp_per_capita = mean(gdpPercap)\n  )\n\n# A tibble: 5 × 3\n  continent life_exp gdp_per_capita\n  &lt;fct&gt;        &lt;dbl&gt;          &lt;dbl&gt;\n1 Africa        54.8          3089.\n2 Americas      73.6         11003.\n3 Asia          70.7         12473.\n4 Europe        77.6         25054.\n5 Oceania       80.7         29810.\n\n\nThe results show considerable differences between continents in both economic conditions and life expectancy.\nFinally, I visualize the relationship between GDP per capita and life expectancy.\n\nfiltered_gapminder |&gt;\n  ggplot(aes(\n    x = gdpPercap,\n    y = lifeExp,\n    colour = continent\n  )) +\n  geom_point() +\n  scale_x_log10() +\n  labs(\n    title = \"GDP and Life Expectancy in 2007\",\n    x = \"GDP per capita\",\n    y = \"Life expectancy\"\n  ) +\n  theme_minimal()\n\n\n\n\n\n\n\nFigure 1: Relationship between GDP per capita and life expectancy across countries in 2007.\n\n\n\n\n\nCountries with higher GDP per capita generally have higher life expectancy. However, the relationship becomes less pronounced among wealthier countries, suggesting that increases in income are not associated with equally large increases in life expectancy at all income levels."
+  },
+  {
+    "objectID": "posts/first-weeks/index.html",
+    "href": "posts/first-weeks/index.html",
+    "title": "My first weeks in MDS",
+    "section": "",
+    "text": "First Day of MDS! The excitement :)\n\n\nMy first week in the MDS program felt like the beginning of a very exciting chapter, but by the end of the week, I found myself feeling a little uncertain about what lay ahead. After studying Computer Science and working as a software engineer, I came into the program feeling confident about my technical background, but I quickly realized that data science would push me to think differently. Moving from Rwanda and starting school in a completely new environment has also made the experience more meaningful. There have been moments of excitement, moments of feeling overwhelmed, and a lot of moments where I’ve reminded myself why I chose to take this step.\nOne of my favorite parts of the first week has been meeting my classmates and hearing about their different backgrounds and experiences. I now have friends from China, India, Mexico,and Canada, having different skills across different sectors. Being surrounded by people who have different strengths has made me feel both challenged and motivated. Coming from a software engineering background, I’m used to thinking about how to build things, but I’m excited to learn how to ask better questions of data and use it to understand problems more deeply. My biggest suprise this week however, was the realization that this program is indeed intensive. There are lots of challenging assignments to keep up with.\nAll in all, I think the biggest feeling I’m taking away is hopeful anticipation. I know the next few months will be demanding, and there will probably be many moments when I question whether I can keep up. But I also know that growth usually comes from being uncomfortable and trying something new. Having gotten a better sense of how the program is structured, I now feel more mentally prepared for the effort required in the coming weeks. I have a clearer idea of how to manage my time and make good use of the resources available to me while maintaining a healthy balance and avoiding burnout and feeling overwhelmed."
+  },
+  {
+    "objectID": "posts/python-posts/index.html",
+    "href": "posts/python-posts/index.html",
+    "title": "Exploring Palmer Penguins",
+    "section": "",
+    "text": "The data comes from the Palmer Penguins project.\n\nimport pandas as pd\nimport altair as alt\nfrom palmerpenguins import load_penguins\n\npenguins = load_penguins()\npenguins.head()\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nmale\n2007\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nfemale\n2007\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nfemale\n2007\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n2007\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nfemale\n2007\n\n\n\n\n\n\n\nI first compared the average body mass of each species.\n\npenguins.groupby(\"species\")[\"body_mass_g\"].mean()\n\nspecies\nAdelie       3700.662252\nChinstrap    3733.088235\nGentoo       5076.016260\nName: body_mass_g, dtype: float64\n\n\nGentoo penguins have the highest average body mass of the three species.\nNext, I looked at the relationship between flipper length and body mass.\n\nalt.Chart(penguins).mark_point().encode(\n    x=\"flipper_length_mm\",\n    y=\"body_mass_g\",\n    color=\"species\"\n)\n\n\n\n\n\n\n\n\n\nFigure 1: Relationship between flipper length and body mass across penguin species.\n\n\n\n\nThe plot shows that penguins with longer flippers tend to have greater body mass."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I grew up in Rwanda and studied Computer Science at the African Leadership University. Before starting the MDS, I worked as a Software Engineer, building and maintaining data-driven systems and automation tools. I’ve also been involved in the tech community through organizations like Google Developers Group Kigali, that organize events and mentor students and early-career developers."
+  },
+  {
+    "objectID": "about.html#background",
+    "href": "about.html#background",
+    "title": "About",
+    "section": "",
+    "text": "I grew up in Rwanda and studied Computer Science at the African Leadership University. Before starting the MDS, I worked as a Software Engineer, building and maintaining data-driven systems and automation tools. I’ve also been involved in the tech community through organizations like Google Developers Group Kigali, that organize events and mentor students and early-career developers."
+  },
+  {
+    "objectID": "about.html#why-data-science",
+    "href": "about.html#why-data-science",
+    "title": "About",
+    "section": "Why Data Science",
+    "text": "Why Data Science\nMy interest in data science grew from seeing how much potential data has to improve the systems around us. Through my work in software engineering, I became increasingly interested in not just building systems that collect data, but using that data to understand problems, make better decisions, and create meaningful solutions. I joined the MDS to strengthen my skills in statistics, machine learning, and data analysis and to make the transition from software engineering into data-focused roles."
+  },
+  {
+    "objectID": "about.html#outside-of-data-science",
+    "href": "about.html#outside-of-data-science",
+    "title": "About",
+    "section": "Outside of Data Science",
+    "text": "Outside of Data Science\nOutside of school and work, I enjoy spending time with friends, exploring new places, and discovering new music especially pop music and afrobeats. I also enjoy being involved in community activities and meeting people from different backgrounds. On a quiet weekend, though, I’m just as happy staying in, watching a good show, and recharging.\nsys.executable"
+  }
+]

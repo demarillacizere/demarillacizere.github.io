@@ -4,9 +4,8 @@ author: "Louise Izere"
 date: 2026-09-22
 format: html
 jupyter: python3
+image: "penguins.jpg"
 ---
-
-## Exploring Palmer Penguins
 
 The data comes from the [Palmer Penguins project](https://allisonhorst.github.io/palmerpenguins/).
 
@@ -30,6 +29,8 @@ Gentoo penguins have the highest average body mass of the three species.
 Next, I looked at the relationship between flipper length and body mass.
 
 ```{python}
+#| label: fig-flipper-body-mass
+#| fig-cap: "Relationship between flipper length and body mass across penguin species."
 alt.Chart(penguins).mark_point().encode(
     x="flipper_length_mm",
     y="body_mass_g",

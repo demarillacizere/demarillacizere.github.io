@@ -1,0 +1,66 @@
+---
+title: "Exploring Global Development with Gapminder"
+author: "Louise Izere"
+date: 2026-09-22
+format: html
+image: "global-development.jpg"
+---
+
+In this post, I explore how life expectancy and GDP per capita differ across continents using the Gapminder dataset.
+
+**Data source:** [Gapminder](https://www.gapminder.org/data/)
+
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)
+library(gapminder)
+```
+
+First, I look at countries with the highest life expectancy in 2007.
+
+```{r}
+filtered_gapminder <- filter(gapminder, year == 2007)
+filtered_gapminder |>
+  arrange(desc(lifeExp)) |>
+  select(country, continent, lifeExp, gdpPercap) |>
+  head(10)
+```
+
+The countries with the highest life expectancy in 2007 were mostly in Asia and Europe.
+
+Next, I calculate the average life expectancy and GDP per capita for each continent.
+
+```{r}
+filtered_gapminder |>
+  group_by(continent) |>
+  summarise(
+    life_exp = mean(lifeExp),
+    gdp_per_capita = mean(gdpPercap)
+  )
+```
+
+The results show considerable differences between continents in both economic conditions and life expectancy.
+
+Finally, I visualize the relationship between GDP per capita and life expectancy.
+
+```{r}
+#| label: fig-gdp-life-expectancy
+#| fig-cap: "Relationship between GDP per capita and life expectancy across countries in 2007."
+filtered_gapminder |>
+  ggplot(aes(
+    x = gdpPercap,
+    y = lifeExp,
+    colour = continent
+  )) +
+  geom_point() +
+  scale_x_log10() +
+  labs(
+    title = "GDP and Life Expectancy in 2007",
+    x = "GDP per capita",
+    y = "Life expectancy"
+  ) +
+  theme_minimal()
+```
+
+Countries with higher GDP per capita generally have higher life expectancy. However, the relationship becomes less pronounced among wealthier countries, suggesting that increases in income are not associated with equally large increases in life expectancy at all income levels.
