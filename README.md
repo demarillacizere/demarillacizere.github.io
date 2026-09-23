@@ -2,17 +2,17 @@
 
 This repository contains a Quarto website documenting my experiences in the MDS program so far. It also includes computational blog posts in R and Python that explore real-world datasets through reproducible code, tables, and visualizations.
 
-## Requirements
+## Software Requirements
 
-Install the following before building the site:
+Before building the website, install the following software. These are the versions used to build this project:
 
-* **Quarto:** `1.10.18`
-* **R:** `4.6.1`
-* **uv:** `0.12.9`
+* **Quarto:** `1.10.18` — Install from the [Quarto installation page](https://quarto.org/docs/get-started/).
+* **R:** `4.6.1` — Install from [CRAN](https://cran.r-project.org/).
+* **uv:** `0.12.9` — Install using the [official uv installation guide](https://docs.astral.sh/uv/getting-started/installation/).
 
-The R dependencies are managed with `renv`, which bootstraps itself from the repository. Python dependencies are managed with `uv`.
+The R dependencies are managed with `renv`. You do not need to install `renv` separately because it bootstraps itself when the project is restored.
 
-You can check your installed versions with:
+After installation, verify the versions from the terminal:
 
 ```bash
 quarto --version
@@ -41,7 +41,7 @@ Run in the terminal:
 uv sync
 ```
 
-This creates/restores the Python environment using the dependencies recorded in the repository.
+This creates the Python environment using the dependencies recorded in the repository.
 
 ### 3. Restore the R environment
 
@@ -74,7 +74,7 @@ uv run quarto render
 The rendered website will be created in:
 
 ```text
-_site/
+docs/
 ```
 
 ### 5. View the website locally
