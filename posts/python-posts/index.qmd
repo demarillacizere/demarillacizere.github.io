@@ -9,8 +9,11 @@ image: "penguins.jpg"
 
 The data comes from the [Palmer Penguins project](https://allisonhorst.github.io/palmerpenguins/).
 
+**License:** CC0 (Creative Commons Zero)
+
+**Citation:** Horst AM, Hill AP, Gorman KB (2020). *palmerpenguins: Palmer Archipelago (Antarctica) penguin data*. R package version 0.1.0. doi: 10.5281/zenodo.3960218.
+
 ```{python}
-import pandas as pd
 import altair as alt
 from palmerpenguins import load_penguins
 
@@ -32,10 +35,31 @@ Next, I looked at the relationship between flipper length and body mass.
 #| label: fig-flipper-body-mass
 #| fig-cap: "Relationship between flipper length and body mass across penguin species."
 alt.Chart(penguins).mark_point().encode(
-    x="flipper_length_mm",
-    y="body_mass_g",
-    color="species"
+    x=alt.X(
+        "flipper_length_mm:Q",
+        scale=alt.Scale(domain=[170, 235]),
+        title="Flipper length (mm)"
+    ),
+    y=alt.Y(
+        "body_mass_g:Q",
+        scale=alt.Scale(domain=[2500, 6500]),
+        title="Body mass (g)"
+    ),
+    color="species:N"
+).properties(
+    width=600,
+    height=400
 )
 ```
 
 The plot shows that penguins with longer flippers tend to have greater body mass.
+
+Finally, I calculated the correlation between flipper length and body mass for each species.
+```{python}
+(penguins
+.groupby("species")
+.apply( lambda x: x["flipper_length_mm"].corr(x["body_mass_g"]))
+)
+```
+
+The correlations are positive for all three species, showing that the relationship between longer flippers and greater body mass is also present within each species, not just across the full dataset.

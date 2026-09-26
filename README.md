@@ -1,4 +1,4 @@
-## Hey there
+## Hey there 👋
 
 This repository contains a Quarto website documenting my experiences in the MDS program so far. It also includes computational blog posts in R and Python that explore real-world datasets through reproducible code, tables, and visualizations.
 
@@ -9,6 +9,7 @@ Before building the website, install the following software. These are the versi
 * **Quarto:** `1.10.18` — Install from the [Quarto installation page](https://quarto.org/docs/get-started/).
 * **R:** `4.6.1` — Install from [CRAN](https://cran.r-project.org/).
 * **uv:** `0.12.9` — Install using the [official uv installation guide](https://docs.astral.sh/uv/getting-started/installation/).
+* **Python:** `3.14` — It has been installed via uv.
 
 The R dependencies are managed with `renv`. You do not need to install `renv` separately because it bootstraps itself when the project is restored.
 
@@ -31,7 +32,7 @@ git clone https://github.com/demarillacizere/demarillacizere.github.io
 cd demarillacizere
 ```
 
-All remaining commands should be run from the root of the repository.
+All these commands should be run from the root of the repository.
 
 ### 2. Install the Python dependencies
 
@@ -93,5 +94,5 @@ The R post uses the **Gapminder** dataset provided through the `gapminder` R pac
 
 The Python post uses the **Palmer Penguins** dataset provided through the `palmerpenguins` Python package.
 
-Because these datasets are supplied by installed packages, the site does not need to download the datasets from their original sources while rendering. However, an internet connection may be required during the initial environment setup to install the R and Python dependencies.
+Because these datasets are supplied by installed packages, the site does not need to download the datasets from their original sources while rendering.
 

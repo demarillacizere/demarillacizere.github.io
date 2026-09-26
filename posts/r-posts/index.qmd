@@ -10,6 +10,10 @@ In this post, I explore how life expectancy and GDP per capita differ across con
 
 **Data source:** [Gapminder](https://www.gapminder.org/data/)
 
+**License:** Creative Commons Attribution (CC BY)
+
+**Attribution:** Based on free material from GAPMINDER.ORG, CC-BY LICENSE.
+
 ```{r}
 #| message: false
 #| warning: false
